@@ -4,11 +4,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
 // const passport = require('passport');
-const sequelize = require('../db/database-connection');
+const sequelize = require('./db/database-connection');
 // require('./api/middlewares/passportJWTConfig')(passport);
 const helmet = require('helmet');
 const http = require('http');
-const router = require('./routes/router');
+const router = require('./api/routes/router');
 // const scriptRunner = require('./api/scripts/scriptRunner');
 const rateLimit = require('express-rate-limit');
 const limiter = rateLimit({
