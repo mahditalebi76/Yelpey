@@ -34,12 +34,13 @@ const User = dbConnection.define('user', {
 		type: Sequelize.STRING,
 		allowNull: false
 	},
-	imageId: {
+	//avatar
+	avatarId: {
 		type: Sequelize.INTEGER
 	},
 	sex: {
 		type: Sequelize.STRING,
-		in: ['female', 'male', 'other']
+		in: ['female', 'male', ]
 	},
 	verificationAddressId: {
 		type: Sequelize.INTEGER,

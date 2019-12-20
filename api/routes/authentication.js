@@ -1,13 +1,16 @@
 const router = require('express').Router();
 const passport = require('passport');
 const schemas = require('../validators/schemas');
-const middleware = require('../middlewares/Joi');
-authenticationController = require('../controllers/authentication');
+const validate = require('../middlewares/Joi');
+const register = require('../controllers/authentication/register').register;
+const login = require('../controllers/authentication/login').login;
+const emailVerification = require('../controllers/authentication/emailVerification').emailVerification;
+const forgotPassword = require('../controllers/authentication/forgotPassword');
 
-router.post('/register', middleware(schemas.register), authenticationController.register);
-router.post('/login', middleware(schemas.login), authenticationController.login);
-router.post('/verifyEmail', middleware(schemas.emailVerification), authenticationController.emailVerification);
-router.post('/forgotPasswordEmail', middleware(schemas.forgotPassEmail), authenticationController.forgotPasswordEmail);
-router.post('/newPassword', middleware(schemas.newPassword), authenticationController.newPassword);
+router.post('/register', validate(schemas.register), register);
+router.post('/login', validate(schemas.login), login);
+router.post('/verifyEmail', validate(schemas.emailVerification), emailVerification);
+router.post('/forgotPasswordEmail', validate(schemas.forgotPassEmail), forgotPassword.sendEmail);
+router.post('/newPassword', validate(schemas.newPassword), forgotPassword.newPassword);
 
 module.exports = router
