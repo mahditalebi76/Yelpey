@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
 // const passport = require('passport');
-const sequelize = require('./db/database-connection');
-// require('./api/middlewares/passportJWTConfig')(passport);
+// const sequelize = require('./models/database-connection');
+// require('./api/middlewares/passortJWTConfig')(passport);
 const helmet = require('helmet');
 const http = require('http');
 const router = require('./api/routes/router');
@@ -36,9 +36,9 @@ app.use('/api', router);
 // require('./api/models/databaseRelations');
 
 //* for just creating the database
-sequelize.sync({
-    alter: true
-});
+// sequelize.sync({
+//     alter: true
+// });
 
 // scriptRunner.runAllScripts()
 

@@ -2,7 +2,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const randomstring = require('randomstring');
-const User = require('../../db/models/User');
+const db = require('../../models');
+const User = db.users;
 // const mailController = require('../mailController');
 
 

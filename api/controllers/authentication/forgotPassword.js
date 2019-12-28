@@ -2,7 +2,8 @@ const bcrypt = require('bcryptjs');
 const randomstring = require('randomstring');
 const userController = require('../user');
 const forgotPasswordMailer = require('../../middlewares/mails/forgotPassword');
-const User = require('../../../db/models/User');
+const db = require('../../../models');
+const User = db.users;
 
 module.exports.sendEmail = async (req, res) => {
     userController

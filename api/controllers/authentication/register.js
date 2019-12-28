@@ -2,11 +2,12 @@ const bcrypt = require('bcryptjs');
 const randomstring = require('randomstring');
 const userController = require('../user');
 const emailVerificationMailer = require('../../middlewares/mails/emailVerification');
-const User = require('../../../db/models/User');
-const jwtSecret = process.env.JWT_SECRET;
-const Op = require('sequelize');
+const db = require('../../../models/index');
+
+const User = db.users;
 
 module.exports.register = async (req, res) => {
+    console.log(User)
     User.findOne({
             where: {
                 email: req.body.email
@@ -30,8 +31,8 @@ module.exports.register = async (req, res) => {
                             length: 4,
                             charset: 'numeric'
                         });
-                        userController
-                            .createUser({
+
+                        User.create({
                                 email: req.body.email,
                                 password: hash,
                                 confirmationCode,

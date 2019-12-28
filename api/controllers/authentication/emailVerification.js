@@ -1,5 +1,6 @@
 const userController = require('../user');
-const User = require('../../../db/models/User');
+const db = require('../../../models');
+const User = db.users;
 const bcrypt = require('bcryptjs');
 
 module.exports.emailVerification = async (req, res) => {

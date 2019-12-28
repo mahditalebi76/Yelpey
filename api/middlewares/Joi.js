@@ -19,7 +19,6 @@ const middleware = schema => {
 					outputErrors[item.path] = new Array(item.message);
 				}
 				console.log('err, ', item.message)
-
 			});
 			res.status(422).json({
 				errors: outputErrors
