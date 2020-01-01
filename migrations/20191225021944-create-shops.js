@@ -12,12 +12,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      address: {
+      addressId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         unique: true,
       },
-      category: {
+      categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },

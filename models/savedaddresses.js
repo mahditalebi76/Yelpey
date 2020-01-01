@@ -34,8 +34,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   savedAddresses.associate = function (models) {
     // associations can be defined here
-    savedAddresses.hasMany(models.users)
-    savedAddresses.hasMany(models.addresses)
   };
   return savedAddresses;
 };

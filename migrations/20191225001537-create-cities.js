@@ -11,9 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
+        unique: false
       },
-      state: {
+      stateId: {
         type: Sequelize.INTEGER,
         allowNull: false
       },

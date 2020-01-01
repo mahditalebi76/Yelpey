@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: false
     },
     stateId: {
       type: DataTypes.INTEGER,
@@ -31,10 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   cities.associate = function (models) {
     // associations can be defined here
-    cities.hasOne(models.states, {
-      foreignKey: 'stateId',
-      targetKey: 'id'
-    })
+    cities.hasMany(models.addresses);
   };
   return cities;
 };

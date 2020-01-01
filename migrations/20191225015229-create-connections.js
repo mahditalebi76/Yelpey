@@ -8,11 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      follower: {
+      followerId: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      followee: {
+      followeeId: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
@@ -27,7 +27,7 @@ module.exports = {
     }, {
       indexes: [{
         unique: true,
-        fields: ['follower', 'followee']
+        fields: ['followerId', 'followeeId']
       }]
     });
   },

@@ -69,10 +69,12 @@ module.exports = (sequelize, DataTypes) => {
 		}, {}
 	);
 	shops.associate = function (models) {
+		shops.hasMany(models.comments)
+		shops.hasMany(models.reviews)
+		shops.hasMany(models.shopPosts)
+		shops.hasMany(models.shopRates)
+
 		// associations can be defined here
-		shops.hasOne(models.addresses);
-		shops.hasOne(models.categories);
-		shops.hasOne(models.images);
 	};
 	return shops;
 };

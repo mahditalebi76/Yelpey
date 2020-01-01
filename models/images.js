@@ -34,7 +34,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   images.associate = function (models) {
-    images.hasOne(models.users)
+    images.hasOne(models.categories)
+    images.hasOne(models.users, {
+      foreignKey: 'avatar',
+      targetKey: 'id'
+    });
+    images.hasOne(models.shops);
+    images.hasMany(models.shopPosts)
+
   };
   return images;
 };

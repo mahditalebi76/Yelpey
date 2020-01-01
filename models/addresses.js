@@ -46,7 +46,10 @@ module.exports = (sequelize, DataTypes) => {
   );
   addresses.associate = function (models) {
     // associations can be defined here
-    addresses.hasOne(models.cities);
+    addresses.hasMany(models.users);
+    addresses.hasMany(models.shops);
+    addresses.hasMany(models.savedAddresses)
+
   };
   return addresses;
 };

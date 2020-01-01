@@ -42,7 +42,7 @@ module.exports = {
 					type: Sequelize.STRING,
 					in: ['female', 'male']
 				},
-				address: {
+				addressId: {
 					//refrences addresses
 					type: Sequelize.INTEGER,
 					unique: true
@@ -81,9 +81,7 @@ module.exports = {
 					allowNull: false,
 					type: Sequelize.DATE
 				}
-			}, {
-				underscored: true
-			}
+			}, {}
 		);
 	},
 	down: (queryInterface, Sequelize) => {

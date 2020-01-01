@@ -62,8 +62,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   reviews.associate = function (models) {
     // associations can be defined here
-    reviews.hasMany(models.users)
-    reviews.hasMany(models.shops)
   };
   return reviews;
 };

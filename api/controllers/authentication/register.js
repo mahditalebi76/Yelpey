@@ -7,7 +7,12 @@ const db = require('../../../models/index');
 const User = db.users;
 
 module.exports.register = async (req, res) => {
-    console.log(User)
+
+    // {req body : 
+    //     email,
+    //     password,
+    //     name
+    // }
     User.findOne({
             where: {
                 email: req.body.email

@@ -38,7 +38,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     sex: {
       type: DataTypes.STRING,
-      in: ['female', 'male', ]
+      in: ['female', 'male', ],
+      defaultValue: 'male'
     },
     addressId: {
       //refrences addresses
@@ -60,6 +61,7 @@ module.exports = (sequelize, DataTypes) => {
         model: 'images', // name of Target model
         key: 'id', // key in Target model that we're referencing
       },
+      allowNull: true
     },
     confirmationCode: {
       type: DataTypes.STRING
@@ -79,12 +81,21 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     }
-  }, {
-    underscored: true
-  });
+  }, {});
   users.associate = function (models) {
-    users.hasOne(models.addresses);
-    users.hasOne(models.images);
+    users.hasMany(models.images)
+    users.hasMany(models.comments)
+    users.hasMany(models.connections, {
+      foreignKey: 'followerId',
+      targetKey: 'id'
+    })
+    users.hasMany(models.connections, {
+      foreignKey: 'followeeId',
+      targetKey: 'id'
+    })
+    users.hasMany(models.reviews)
+    users.hasMany(models.savedAddresses)
+    users.hasMany(models.shopRates)
   };
   return users;
 };

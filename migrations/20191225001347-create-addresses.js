@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      city: {
+      cityId: {
         //refrences cities
         type: Sequelize.INTEGER,
         allowNull: false,

@@ -12,11 +12,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      user: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      shop: {
+      shopId: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
@@ -31,7 +31,7 @@ module.exports = {
     }, {
       indexes: [{
         unique: true,
-        fields: ['user', 'shop ']
+        fields: ['userId', 'shopId']
       }]
     });
   },

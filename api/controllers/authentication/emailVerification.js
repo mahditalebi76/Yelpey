@@ -9,33 +9,37 @@ module.exports.emailVerification = async (req, res) => {
                 email: req.body.email
             }
         })
-        .then(async user => {
-            if (user.emailConfirmed) {
-                return res.status(421).json({
-                    error: 'user already confirmed'
-                });
-            } else {
-
-                if (req.body.confirmationCode == user.confirmationCode) {
-                    //correct code
-                    await userController.updateUser(user.userId, {
-                        emailConfirmed: true,
-                        confirmationCode: null
-                    });
-                    return res.status(200).json({
-                        message: 'email verification complete'
+        .then(
+            async user => {
+                // console.log(user.id)
+                if (user.emailVerified) {
+                    return res.status(421).json({
+                        error: 'user already confirmed'
                     });
                 } else {
-                    //wrong code
-                    return res.status(422).json({
-                        error: 'confirmation code is wrong'
-                    });
+                    if (req.body.confirmationCode == user.confirmationCode) {
+                        await User.update({
+                            emailVerified: true,
+                            confirmationCode: null
+                        }, {
+                            where: {
+                                id: user.id
+                            }
+                        }).then(updated => {
+                            return res.status(200).json({
+                                message: 'email verification complete'
+                            });
+                        })
+                    } else {
+                        return res.status(422).json({
+                            error: 'confirmation code is wrong'
+                        });
+                    }
                 }
-            }
-        })
+            })
         .catch(err => {
             return res.status(404).json({
-                error: 'email not found1'
+                error: 'email not found'
             });
         });
 };

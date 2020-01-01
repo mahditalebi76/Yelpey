@@ -22,7 +22,7 @@ exports.login = async (req, res) => {
                 } else if (correct) {
                     // password correct
                     const jwtPayload = {
-                        userId: user.userId,
+                        id: user.id,
                         name: user.name,
                         email: user.email,
                         password: user.password

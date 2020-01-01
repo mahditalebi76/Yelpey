@@ -6,20 +6,24 @@ const db = require('../../../models');
 const User = db.users;
 
 module.exports.sendEmail = async (req, res) => {
-    userController
-        .findUser({
-            email: req.body.email
+    User.findOne({
+            where: {
+                email: req.body.email
+            }
         })
         .then(async user => {
             let forgotPasswordCode = await randomstring.generate({
                 length: 6
             });
-            await userController
-                .updateUser(user.userId, {
+            User.update({
                     forgotPasswordCode
+                }, {
+                    where: {
+                        id: user.id
+                    }
                 })
                 .then(async updated => {
-                    await forgotPasswordMailer.sendEmail(
+                    forgotPasswordMailer.sendEmail(
                         user.email,
                         user.forgotPasswordCode
                     );
@@ -54,10 +58,13 @@ module.exports.newPassword = async (req, res) => {
                             error: "new password can't be same as old password "
                         });
                     } else {
-                        userController
-                            .updateUser(user.userId, {
+                        User.update({
                                 password: req.body.password,
                                 forgotPasswordCode: null
+                            }, {
+                                where: {
+                                    id: user.id
+                                }
                             })
                             .then(updated => {
                                 return res.status(200).json({

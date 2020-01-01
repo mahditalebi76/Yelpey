@@ -42,8 +42,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   shopPosts.associate = function (models) {
     // associations can be defined here
-    shopPosts.hasMany(models.shops)
-    shopPosts.hasMany(models.images)
   };
   return shopPosts;
 };
