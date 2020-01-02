@@ -3,6 +3,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
+const passport = require('passport');
+require('./api/middlewares/passportJWTConfig')(passport);
+
 // const passport = require('passport');
 // const sequelize = require('./models/database-connection');
 // require('./api/middlewares/passortJWTConfig')(passport);
@@ -19,8 +22,12 @@ const limiter = rateLimit({
 
 
 // ! --------------------------- MIDDLEWARES ---------------------------------------
-// app.use(passport.initialize());
-
+app.use(passport.initialize());
+app.use(
+    bodyParser.urlencoded({
+        extended: false
+    })
+);
 app.use(limiter);
 app.use(bodyParser.json());
 app.use(cors());

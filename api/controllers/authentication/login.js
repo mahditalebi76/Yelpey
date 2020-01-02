@@ -24,8 +24,7 @@ exports.login = async (req, res) => {
                     const jwtPayload = {
                         id: user.id,
                         name: user.name,
-                        email: user.email,
-                        password: user.password
+                        email: user.email
                     };
                     jwt.sign(
                         jwtPayload,
@@ -38,7 +37,7 @@ exports.login = async (req, res) => {
                                     err,
                                     message: 'jwt encoding failed'
                                 });
-                            } else if (correct) {
+                            } else {
                                 return res.status(200).json({
                                     token: encoded
                                 });

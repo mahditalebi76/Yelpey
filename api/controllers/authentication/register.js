@@ -42,7 +42,8 @@ module.exports.register = async (req, res) => {
                                 password: hash,
                                 confirmationCode,
                                 firstName: req.body.firstName,
-                                lastName: req.body.lastName
+                                lastName: req.body.lastName,
+                                userType: 'normal'
                             })
                             .then(async user => {
                                 emailVerificationMailer.sendEmail(

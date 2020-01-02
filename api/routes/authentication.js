@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
-const schemas = require('../validators/schemas');
+const schemas = require('../validators/auth')
 const validate = require('../middlewares/Joi');
 const register = require('../controllers/authentication/register').register;
 const login = require('../controllers/authentication/login').login;
