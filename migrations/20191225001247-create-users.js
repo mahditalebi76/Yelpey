@@ -55,7 +55,7 @@ module.exports = {
 					type: Sequelize.DATE
 				},
 				//avatar
-				avatar: {
+				avatarId: {
 					//refrences images
 					type: Sequelize.INTEGER
 					// references: {

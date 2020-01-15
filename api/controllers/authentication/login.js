@@ -23,7 +23,8 @@ exports.login = async (req, res) => {
                     // password correct
                     const jwtPayload = {
                         id: user.id,
-                        name: user.name,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
                         email: user.email
                     };
                     jwt.sign(

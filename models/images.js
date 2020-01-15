@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    uploader: {
+    uploaderId: {
       //refrences users
       type: DataTypes.INTEGER,
       references: {
@@ -35,9 +35,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   images.associate = function (models) {
     images.hasOne(models.categories)
-    images.hasOne(models.users, {
-      foreignKey: 'avatar',
-      targetKey: 'id'
+    images.belongsTo(models.users, {
+      foreignKey: 'uploaderId',
+      targetKey: 'id',
+      as: 'uploader'
     });
     images.hasOne(models.shops);
     images.hasMany(models.shopPosts)

@@ -31,9 +31,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
-      // location: {
-      //? WHAt IS THIS SHAHAB?????
-      // }
+      location: {
+        allowNull: false,
+        type: Sequelize.GEOGRAPHY('POINT')
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

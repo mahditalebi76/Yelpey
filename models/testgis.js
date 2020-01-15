@@ -1,24 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const cities = sequelize.define('cities', {
+  const testGIS = sequelize.define('testGIS', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: false
-    },
-    stateId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'states',
-        key: 'id'
-      }
+    geo: {
+      type: DataTypes.GEOGRAPHY('POINT')
+
+
     },
     createdAt: {
       allowNull: false,
@@ -29,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     }
   }, {});
-  cities.associate = function (models) {
+  testGIS.associate = function (models) {
     // associations can be defined here
   };
-  return cities;
+  return testGIS;
 };

@@ -11,7 +11,7 @@ updateUserSchema = Joi.object().keys({
 		.regex(/09(0[1-2]|1[0-9]|3[0-9]|2[0-1])-?[0-9]{3}-?[0-9]{4}/),
 
 	sex: Joi.string().valid('male', 'female', 'other'),
-
+	addressId: Joi.number().integer().min(1),
 	birthday: Joi.date()
 		.format('YYYY-MM-DD'),
 

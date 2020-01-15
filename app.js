@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 
-// app.use('/public', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 
 // ? ---------------------- ROUTES ------------------------------
 

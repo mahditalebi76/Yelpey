@@ -54,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     },
     //avatar
-    avatar: {
+    avatarId: {
       //refrences images
       type: DataTypes.INTEGER,
       references: {
@@ -83,15 +83,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   users.associate = function (models) {
-    users.hasMany(models.images)
+    users.belongsTo(models.images, {
+      foreignKey: 'avatarId',
+      targetKey: 'id',
+      as: 'avatar'
+    });
     users.hasMany(models.comments)
-    users.hasMany(models.connections, {
-      foreignKey: 'followerId',
-      targetKey: 'id'
-    })
-    users.hasMany(models.connections, {
-      foreignKey: 'followeeId',
-      targetKey: 'id'
+    users.belongsTo(models.addresses, {
+      as: 'address'
     })
     users.hasMany(models.reviews)
     users.hasMany(models.savedAddresses)

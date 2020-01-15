@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      uploader: {
+      uploaderId: {
         //refrences users
         type: Sequelize.INTEGER,
         // references: {

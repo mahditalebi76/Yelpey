@@ -39,7 +39,12 @@ module.exports = (sequelize, DataTypes) => {
   });
   connections.associate = function (models) {
     // associations can be defined here
-
+    connections.belongsTo(models.users, {
+      as: 'follower'
+    })
+    connections.belongsTo(models.users, {
+      as: 'followee'
+    })
   };
   return connections;
 };

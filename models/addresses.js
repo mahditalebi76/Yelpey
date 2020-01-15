@@ -31,9 +31,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false
       },
-      // location: {
-      //? WHAt IS THIS SHAHAB?????
-      // }
+      location: {
+        allowNull: false,
+        type: DataTypes.GEOGRAPHY('POINT')
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE
@@ -47,6 +48,9 @@ module.exports = (sequelize, DataTypes) => {
   addresses.associate = function (models) {
     // associations can be defined here
     addresses.hasMany(models.users);
+    addresses.belongsTo(models.cities, {
+      through: 'CityId'
+    })
     addresses.hasMany(models.shops);
     addresses.hasMany(models.savedAddresses)
 
