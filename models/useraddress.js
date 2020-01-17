@@ -1,13 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const images = sequelize.define('images', {
+  const userAddress = sequelize.define('userAddress', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    uploaderId: {
+    userId: {
       //refrences users
       type: DataTypes.INTEGER,
       references: {
@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
       },
       allowNull: false,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    path: {
-      type: DataTypes.STRING,
+    addressId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'addresses',
+        key: 'id'
+      },
     },
     createdAt: {
       allowNull: false,
@@ -33,14 +33,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     }
   }, {});
-  images.associate = function (models) {
-    images.belongsTo(models.users, {
-      foreignKey: 'uploaderId',
+  userAddress.associate = function (models) {
+    // associations can be defined here
+    userAddress.belongsTo(models.users, {
+      foreignKey: 'userId',
       targetKey: 'id',
-      as: 'uploader'
+      as: 'user'
     });
-    // images.hasMany(models.shopPosts)
 
+    userAddress.belongsTo(models.addresses, {
+      foreignKey: 'addressId',
+      targetKey: 'id',
+      as: 'address'
+    });
   };
-  return images;
+  return userAddress;
 };

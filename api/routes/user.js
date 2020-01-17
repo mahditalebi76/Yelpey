@@ -10,7 +10,7 @@ const followController = require('../controllers/user/follow.js')
 
 router.get('/findAllUsers', userController.findAllUsers);
 
-router.get('/getUserInfo', validate(schemas.getUserInfo), getUserInfo);
+router.post('/getUserInfo', validate(schemas.getUserInfo), getUserInfo);
 
 router.patch('/updateUser',
     passport.authenticate('jwt', {
@@ -28,14 +28,17 @@ router.post('/followUser',
     followController.follow
 );
 
-router.get('/followers',
+router.post('/followers',
     validate(schemas.followers),
     followController.followers
 );
 
-router.get('/following',
+router.post('/following',
     validate(schemas.following),
     followController.following
 );
+
+
+
 
 module.exports = router

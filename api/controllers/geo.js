@@ -31,14 +31,15 @@ module.exports.getAroundShops = (req, res) => {
     lat = req.body.lat;
     lng = req.body.lng
     query =
-        `
-SELECT
-    "id", "createdAt", ST_Distance(ST_MakePoint(:latitude, :longitude), "geo") AS distance
-FROM
-    "testGIs"
-WHERE
-ST_Distance(ST_MakePoint(:latitude, :longitude), "geo") < :maxDistance
-`
+        `SELECT * FROM "shops" WHERE "addressId" IN 
+        (
+        SELECT
+            "id"
+        FROM
+            "addresses"
+        WHERE
+        ST_Distance(ST_MakePoint(:latitude, :longtitude), "location") < 1000000000
+        )`
 
     Gis.sequelize.query(query, {
             replacements: {

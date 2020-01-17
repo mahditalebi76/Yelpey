@@ -51,7 +51,6 @@ module.exports = (sequelize, DataTypes) => {
     addresses.belongsTo(models.cities, {
       through: 'CityId'
     })
-    addresses.hasMany(models.shops);
     addresses.hasMany(models.savedAddresses)
 
   };

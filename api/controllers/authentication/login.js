@@ -40,7 +40,17 @@ exports.login = async (req, res) => {
                                 });
                             } else {
                                 return res.status(200).json({
-                                    token: encoded
+                                    token: encoded,
+                                    id: user.id,
+                                    firstName: user.firstName,
+                                    lastName: user.lastName,
+                                    email: user.email,
+                                    avatarId: user.avatarId,
+                                    phoneNumber: user.phoneNumber,
+                                    sex: user.sex,
+                                    addressId: user.addressId,
+                                    birthday: user.birthday,
+                                    nationalCode: user.nationalCode
                                 });
                             }
                         }

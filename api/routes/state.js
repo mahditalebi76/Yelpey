@@ -5,9 +5,9 @@ const stateController = require('../controllers/state/states')
 const geo = require('../controllers/geo')
 
 router.get('/getStates', stateController.getStates);
-router.get('/getCities', stateController.getCities);
+router.post('/getCities', stateController.getCities);
 router.get('/getStatesCities', stateController.getStatesCities);
-router.post('/addCordinate', geo.addCordinate)
-router.get('/getAroundShops', geo.getAroundShops)
+// router.post('/addCordinate', geo.addCordinate)
+// router.get('/getAroundShops', geo.getAroundShops)
 
 module.exports = router

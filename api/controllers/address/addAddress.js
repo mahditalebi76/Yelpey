@@ -25,6 +25,9 @@ module.exports.createAddress = (postalCode, addressText, cityId, location) => {
     })
 }
 
+
+
+
 module.exports.addAddressReq = (req, res) => {
     const point = {
         type: 'Point',

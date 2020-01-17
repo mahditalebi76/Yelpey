@@ -33,7 +33,7 @@ module.exports = {
       },
       thumbnail: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         //TODO add default thumbnail for shops
         // defaultValue:1
       },
@@ -42,11 +42,14 @@ module.exports = {
         allowNull: false,
         defaultValue: false
       },
-      location: {
-        type: Sequelize.STRING,
-        allowNull: false
+      rateSum: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
-
+      rateCount: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

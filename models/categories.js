@@ -19,16 +19,13 @@ module.exports = (sequelize, DataTypes) => {
       //? SHAHAAAAAAAAB default value chi bashe?
       defaultValue: 'something'
     },
+    imageId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     description: {
       type: DataTypes.STRING,
       allowNull: true
-    },
-    imageId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'images',
-        key: 'id'
-      }
     },
     createdAt: {
       allowNull: false,
@@ -41,7 +38,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   categories.associate = function (models) {
     // associations can be defined here
-    categories.hasMany(models.shops);
+    categories.belongsTo(models.images, {
+      foreignKey: 'imageId',
+      as: 'image'
+    })
 
   };
   return categories;

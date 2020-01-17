@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      value: {
+      stars: {
         type: Sequelize.INTEGER,
         allowNull: false
       },

@@ -19,14 +19,14 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
-    imageId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'images',
-        key: 'id'
-      }
-    },
+    // imageId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    //   references: {
+    //     model: 'images',
+    //     key: 'id'
+    //   }
+    // },
     content: {
       type: DataTypes.STRING,
       allowNull: false,
