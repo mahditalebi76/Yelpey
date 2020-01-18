@@ -9,10 +9,12 @@ module.exports.getShop = (req, res) => {
             where: {
                 id: req.body.id
             },
-
-
-            attributes: ['id', [sequelize.literal('Case when "rateCount"=0 then 0 Else CAST("rateSum" AS float) / CAST("rateCount" AS float) End'), 'RATE']],
-            include: ['category', 'address', 'thumbnai']
+            attributes: {
+                include: [
+                    [sequelize.literal('Case when "rateCount"=0 then 0 Else CAST("rateSum" AS float) / CAST("rateCount" AS float) End'), 'RATE']
+                ]
+            },
+            include: ['category', 'address', 'thumbnail']
         }).then(shop => {
             return res.status(200).json({
                 shop

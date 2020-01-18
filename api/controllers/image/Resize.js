@@ -1,4 +1,3 @@
-
 const sharp = require('sharp');
 const path = require('path');
 class Resize {
@@ -12,10 +11,10 @@ class Resize {
         const filepath = this.filepath(filename);
 
         await sharp(buffer)
-            .resize(100, 100, {
-                // fit: sharp.fit.inside,
-                withoutEnlargement: true
-            })
+            // .resize(100, 100, {
+            //     // fit: sharp.fit.inside,
+            //     withoutEnlargement: true
+            // })
             .toFile(filepath);
         return filename;
     }

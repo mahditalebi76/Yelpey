@@ -53,9 +53,10 @@ module.exports.register = async (req, res) => {
                                 return res.status(200).json({
                                     message: 'register done',
                                     userInfo: {
-                                        userId: user.userId,
+                                        id: user.id,
                                         email: user.email,
-                                        name: user.name
+                                        firstName: user.firstName,
+                                        lastName: user.lastName
                                     }
                                 });
                             });

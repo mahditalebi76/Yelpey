@@ -5,7 +5,9 @@ const Category = db.categories;
 const Address = db.addresses;
 const Sequelize = require('sequelize');
 const sequelize = require('../../../database-connection');
-const { Op } = require('sequelize');
+const {
+	Op
+} = require('sequelize');
 const _ = require('lodash');
 
 module.exports.getAroundShops = (req, res) => {
@@ -13,7 +15,8 @@ module.exports.getAroundShops = (req, res) => {
 	lng = req.body.lng;
 	maxDistance = req.body.maxDistance;
 	query = `
-        SELECT "shops".* , "addresses"."location" FROM "shops","addresses" 
+		SELECT "shops".* , "addresses"."location", (Case when "rateCount"=0 then 0 Else CAST("rateSum" AS float) / CAST("rateCount" AS float) End) AS "RATE"
+		 FROM "shops","addresses" 
         WHERE "shops"."addressId"="addresses"."id" AND "addressId" IN 
         (SELECT
             "id"
@@ -26,7 +29,6 @@ module.exports.getAroundShops = (req, res) => {
 	sequelize
 		.query(query, {
 			model: Shop,
-
 			replacements: {
 				latitude: lat,
 				longitude: lng,

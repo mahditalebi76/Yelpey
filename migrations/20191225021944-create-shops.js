@@ -8,6 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'users',
+          key: 'id'
+        }
+      },
       name: {
         type: Sequelize.STRING,
         allowNull: false
@@ -31,7 +39,7 @@ module.exports = {
         allowNull: false,
         defaultValue: false
       },
-      thumbnail: {
+      imageId: {
         type: Sequelize.INTEGER,
         allowNull: true,
         //TODO add default thumbnail for shops

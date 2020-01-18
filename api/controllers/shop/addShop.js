@@ -17,6 +17,7 @@ module.exports.addShop = (req, res) => {
     createAddress(req.body.postalCode, req.body.addressText, req.body.cityId, point)
         .then(address => {
             Shop.create({
+                userId: req.user.id,
                 name: req.body.name,
                 addressId: address.id,
                 categoryId: req.body.categoryId,

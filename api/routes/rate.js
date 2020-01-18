@@ -3,9 +3,6 @@ const validate = require('../middlewares/Joi');
 const schemas = require('../validators/user');
 const passport = require('passport');
 const upload = require('../middlewares/uploadMiddleware');
-const {
-    isOwner
-} = require('../middlewares/isOwner');
 
 const {
     addShop
@@ -23,22 +20,31 @@ const {
 const {
     updateShopInfo
 } = require('../controllers/shop/updateShopInfo');
+const {
+    getAllUserRates
+} = require('../controllers/rate/allUserRates')
+const {
+    getUserShopRate
+} = require('../controllers/rate/userShopRate');
 
-router.post(
-    '/addShop',
-    passport.authenticate('jwt', {
-        session: false
-    }), addShop)
-router.post('/getShop', getShop)
-
-router.post('/getAroundShops', getAroundShops)
-
-router.patch('/updateShopInfo',
+router.post('/rateShop',
     passport.authenticate('jwt', {
         session: false
     }),
-    isOwner,
-    upload.single('shopImage'),
-    updateShopInfo)
+    rateShop)
+
+router.post('/getUserShopRate',
+    passport.authenticate('jwt', {
+        session: false
+    }),
+    getUserShopRate)
+
+router.get('/getAllUserRates',
+    passport.authenticate('jwt', {
+        session: false
+    }),
+    getAllUserRates)
+
+
 
 module.exports = router

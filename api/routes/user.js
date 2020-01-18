@@ -5,19 +5,30 @@ upadeUserInfo = require('../controllers/user/userInfo').userInfo;
 const validate = require('../middlewares/Joi');
 const schemas = require('../validators/user');
 const upload = require('../middlewares/uploadMiddleware');
-getUserInfo = require('../controllers/user/getUserInfo').getUserInfo;
+const {
+    getUserInfo,
+    getSelfInfo
+} = require('../controllers/user/getUserInfo');
 const followController = require('../controllers/user/follow.js')
 
 router.get('/findAllUsers', userController.findAllUsers);
 
 router.post('/getUserInfo', validate(schemas.getUserInfo), getUserInfo);
 
+router.post('/getSelfInfo',
+    passport.authenticate('jwt', {
+        session: false
+    }),
+    validate(schemas.getUserInfo), getSelfInfo);
+
+
+
 router.patch('/updateUser',
     passport.authenticate('jwt', {
         session: false
     }),
-    validate(schemas.updateUser),
     upload.single('avatar'),
+    validate(schemas.updateUser),
     upadeUserInfo)
 
 router.post('/followUser',

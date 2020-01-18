@@ -22,7 +22,7 @@ module.exports.userInfo = async (req, res) => {
     const info = `img${req.user.id}__${req.user.firstName}_${req.user.lastName}.jpg`;
     const fileUpload = new Resize(imagePath, info);
     let ImageName = 'img' + req.user.id + '__' + req.user.firstName + '_' + req.user.lastName + '.jpg';
-    let imageUrl = process.env.BASE_URL + '/public/avatars/' + ImageName
+    let imageUrl = '/public/avatars/' + ImageName
 
     updateOrCreate(Image, {
             uploaderId: req.user.id,
@@ -48,7 +48,6 @@ module.exports.userInfo = async (req, res) => {
                         firstName: req.body.firstName,
                         lastName: req.body.lastName,
                         sex: req.body.sex,
-                        addressId: req.body.addressId,
                         birthday: req.body.birthday,
                         avatarId: image.id,
                         nationalCode: req.body.nationalCode

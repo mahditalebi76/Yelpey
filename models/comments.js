@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    value: {
+    content: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -37,7 +37,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   comments.associate = function (models) {
-    // associations can be defined here
+    comments.belongsTo(models.users, {
+      foreignKey: 'userId',
+      as: 'user'
+    })
+    comments.belongsTo(models.shops, {
+      foreignKey: 'shopId',
+      as: 'shop'
+    })
+
 
   };
   return comments;

@@ -8,6 +8,14 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 				type: DataTypes.INTEGER
 			},
+			userId: {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+				references: {
+					model: 'users',
+					key: 'id'
+				}
+			},
 			name: {
 				type: DataTypes.STRING,
 				allowNull: false
@@ -39,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
 				allowNull: false,
 				defaultValue: false
 			},
-			thumbnail: {
+			imageId: {
 				type: DataTypes.INTEGER,
 				allowNull: true,
 				//TODO add default thumbnail for shops
@@ -73,24 +81,25 @@ module.exports = (sequelize, DataTypes) => {
 			}
 		}, {}
 	);
+
+
 	shops.associate = function (models) {
-		// shops.hasMany(models.comments)
-		// shops.hasMany(models.reviews)
-		// shops.hasMany(models.shopPosts)
-		// shops.hasMany(models.shopRates)
 		shops.belongsTo(models.addresses, {
 			foreignKey: 'addressId',
 			as: 'address'
 		})
 		shops.belongsTo(models.images, {
-			foreignKey: 'thumbnail',
-			as: 'thumbnai'
+			foreignKey: 'imageId',
+			as: 'thumbnail'
 		})
 		shops.belongsTo(models.categories, {
 			foreignKey: 'categoryId',
 			as: 'category'
 		})
-
+		shops.belongsTo(models.users, {
+			foreignKey: 'userId',
+			as: 'user'
+		})
 		// associations can be defined here
 	};
 	return shops;
