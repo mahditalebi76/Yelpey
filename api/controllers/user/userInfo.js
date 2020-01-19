@@ -19,9 +19,8 @@ module.exports.userInfo = async (req, res) => {
     //         phoneNumber
     // }
     const imagePath = path.join(__dirname, '../../../public/avatars');
-    const info = `img${req.user.id}__${req.user.firstName}_${req.user.lastName}.jpg`;
-    const fileUpload = new Resize(imagePath, info);
-    let ImageName = 'img' + req.user.id + '__' + req.user.firstName + '_' + req.user.lastName + '.jpg';
+    const ImageName = `user${req.user.id}.jpg`;
+    const fileUpload = new Resize(imagePath, ImageName);
     let imageUrl = '/public/avatars/' + ImageName
 
     updateOrCreate(Image, {

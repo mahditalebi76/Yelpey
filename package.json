@@ -12,6 +12,7 @@
   "dependencies": {
     "@hapi/joi": "^16.1.7",
     "@hapi/joi-date": "^2.0.1",
+    "agile": "0.0.2",
     "bcrypt": "^3.0.6",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -36,6 +37,7 @@
     "randomstring": "^1.1.5",
     "sequelize": "^5.21.2",
     "sequelize-cli": "^5.5.1",
+    "sequelize-values": "^1.1.0",
     "sharp": "^0.23.4"
   }
 }

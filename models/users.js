@@ -94,7 +94,7 @@ module.exports = (sequelize, DataTypes) => {
     })
     users.hasMany(models.reviews)
     users.hasMany(models.savedAddresses)
-    users.hasMany(models.shopRates)
+    users.hasMany(models.shoprates)
   };
   return users;
 };

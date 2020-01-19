@@ -20,6 +20,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      desciption: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
       addressId: {
         type: Sequelize.INTEGER,
         allowNull: false,

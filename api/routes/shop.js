@@ -19,10 +19,31 @@ const {
 const {
     rateShop
 } = require('../controllers/rate/rateShop');
+const {
+    getShopsByCity
+} = require('../controllers/shop/shopByCity');
 
 const {
     updateShopInfo
 } = require('../controllers/shop/updateShopInfo');
+
+const {
+    getAddresses
+} = require('../controllers/address/getAddresses');
+
+const {
+    getShopByCategory
+} = require('../controllers/shop/getShopByCategory');
+
+const {
+    getShopByrate
+} = require('../controllers/shop/getShopByrate')
+
+const {
+    superSearch
+} = require('../controllers/shop/superSearch')
+
+
 
 router.post(
     '/addShop',
@@ -37,8 +58,20 @@ router.patch('/updateShopInfo',
     passport.authenticate('jwt', {
         session: false
     }),
-    isOwner,
     upload.single('shopImage'),
+    isOwner,
     updateShopInfo)
+
+router.post('/getShopsByCity', getShopsByCity)
+
+router.post('/getShopByCategory', getShopByCategory)
+
+router.post('/getShopByrate', getShopByrate)
+
+router.post('/superSearch',
+    passport.authenticate('jwt', {
+        session: false
+    }), superSearch)
+
 
 module.exports = router

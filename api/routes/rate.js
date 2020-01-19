@@ -21,11 +21,11 @@ const {
     updateShopInfo
 } = require('../controllers/shop/updateShopInfo');
 const {
-    getAllUserRates
-} = require('../controllers/rate/allUserRates')
+    getAllUserrates
+} = require('../controllers/rate/allUserrates')
 const {
-    getUserShopRate
-} = require('../controllers/rate/userShopRate');
+    getUserShoprate
+} = require('../controllers/rate/userShoprate');
 
 router.post('/rateShop',
     passport.authenticate('jwt', {
@@ -33,17 +33,17 @@ router.post('/rateShop',
     }),
     rateShop)
 
-router.post('/getUserShopRate',
+router.post('/getUserShoprate',
     passport.authenticate('jwt', {
         session: false
     }),
-    getUserShopRate)
+    getUserShoprate)
 
-router.get('/getAllUserRates',
+router.get('/getAllUserrates',
     passport.authenticate('jwt', {
         session: false
     }),
-    getAllUserRates)
+    getAllUserrates)
 
 
 

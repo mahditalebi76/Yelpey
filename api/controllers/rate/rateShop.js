@@ -1,7 +1,7 @@
 const db = require('../../../models/index');
 const User = db.users;
 const Shop = db.shops;
-const ShopRate = db.shopRates;
+const Shoprate = db.shoprates;
 
 const {
     updateOrCreate
@@ -11,14 +11,14 @@ const {
 module.exports.rateShop = (req, res) => {
 
     if (req.body.stars == 0) {
-        ShopRate.findOne({
+        Shoprate.findOne({
             where: {
                 userId: req.user.id,
                 shopId: req.body.shopId
             }
         }).then(rated => {
             if (rated) {
-                ShopRate.destroy({
+                Shoprate.destroy({
                         where: {
                             userId: req.user.id,
                             shopId: req.body.shopId
@@ -44,7 +44,7 @@ module.exports.rateShop = (req, res) => {
     } else {
 
         updateOrCreate(
-                ShopRate, {
+                Shoprate, {
                     userId: req.user.id,
                     shopId: req.body.shopId
                 }, {

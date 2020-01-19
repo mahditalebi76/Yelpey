@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const shopRates = sequelize.define('shopRates', {
+  const shoprates = sequelize.define('shoprates', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -41,32 +41,32 @@ module.exports = (sequelize, DataTypes) => {
       fields: ['userId', 'shopId']
     }]
   });
-  shopRates.associate = function (models) {
-    shopRates.belongsTo(models.users, {
+  shoprates.associate = function (models) {
+    shoprates.belongsTo(models.users, {
       foreignKey: 'userId',
       as: 'user'
     })
-    shopRates.belongsTo(models.shops, {
+    shoprates.belongsTo(models.shops, {
       foreignKey: 'shopId',
       as: 'shop'
     })
 
   };
 
-  shopRates.beforeBulkDestroy((rate) => {
+  shoprates.beforeBulkDestroy((rate) => {
     return sequelize.models.shops.findOne({
       where: {
         id: rate.where.shopId
       }
     }).then(shop => {
-      return sequelize.models.shopRates.findOne({
+      return sequelize.models.shoprates.findOne({
         where: {
           userId: rate.where.userId,
           shopId: shop.id
         }
-      }).then(oldRate => {
+      }).then(oldrate => {
         return sequelize.models.shops.update({
-          rateSum: shop.rateSum - oldRate.stars,
+          rateSum: shop.rateSum - oldrate.stars,
           rateCount: (shop.rateCount - 1)
         }, {
           where: {
@@ -82,7 +82,7 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-  shopRates.beforeCreate((rate) => {
+  shoprates.beforeCreate((rate) => {
     return sequelize.models.shops.findOne({
       where: {
         id: rate.shopId
@@ -103,20 +103,20 @@ module.exports = (sequelize, DataTypes) => {
   })
 
 
-  shopRates.beforeBulkUpdate((rate) => {
+  shoprates.beforeBulkUpdate((rate) => {
     return sequelize.models.shops.findOne({
       where: {
         id: rate.attributes.shopId
       }
     }).then(shop => {
-      return sequelize.models.shopRates.findOne({
+      return sequelize.models.shoprates.findOne({
         where: {
           userId: rate.attributes.userId,
           shopId: rate.attributes.shopId
         }
-      }).then(oldRate => {
+      }).then(oldrate => {
         return sequelize.models.shops.update({
-          rateSum: shop.rateSum + rate.attributes.stars - oldRate.stars
+          rateSum: shop.rateSum + rate.attributes.stars - oldrate.stars
         }, {
           where: {
             id: shop.id
@@ -131,5 +131,5 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-  return shopRates;
+  return shoprates;
 };

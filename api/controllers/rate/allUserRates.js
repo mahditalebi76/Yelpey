@@ -1,7 +1,7 @@
 const db = require('../../../models/index');
 const User = db.users;
 const Shop = db.shops;
-const ShopRate = db.shopRates;
+const Shoprate = db.shoprates;
 const sequelize = require('../../../database-connection')
 
 const {
@@ -9,9 +9,9 @@ const {
 } = require('../../middlewares/updateOrCreate');
 
 
-module.exports.getAllUserRates = (req, res) => {
+module.exports.getAllUserrates = (req, res) => {
 
-    ShopRate.findAll({
+    Shoprate.findAll({
             where: {
                 userId: req.user.id
             },
@@ -21,7 +21,7 @@ module.exports.getAllUserRates = (req, res) => {
                     as: 'shop',
                     attributes: {
                         include: [
-                            [sequelize.literal('Case when "rateCount"=0 then 0 Else CAST("rateSum" AS float) / CAST("rateCount" AS float) End'), 'RATE']
+                            [sequelize.literal('Case when "rateCount"=0 then 0 Else CAST("rateSum" AS float) / CAST("rateCount" AS float) End'), 'rate']
                         ]
                     },
                     include: ['category', 'address', 'thumbnail']

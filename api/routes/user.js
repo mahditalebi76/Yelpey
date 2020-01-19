@@ -10,7 +10,9 @@ const {
     getSelfInfo
 } = require('../controllers/user/getUserInfo');
 const followController = require('../controllers/user/follow.js')
-
+const {
+    getUserShops
+} = require('../controllers/user/getUserShops');
 router.get('/findAllUsers', userController.findAllUsers);
 
 router.post('/getUserInfo', validate(schemas.getUserInfo), getUserInfo);
@@ -49,7 +51,11 @@ router.post('/following',
     followController.following
 );
 
-
+router.get('/getUserShops',
+    passport.authenticate('jwt', {
+        session: false
+    }),
+    getUserShops)
 
 
 module.exports = router

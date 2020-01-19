@@ -2,8 +2,7 @@ const db = require('../../models/index');
 const Shop = db.shops
 
 module.exports.isOwner = (req, res, next) => {
-
-    return Shop.findOne({
+    Shop.findOne({
             where: {
                 id: req.body.id
             }
@@ -19,7 +18,7 @@ module.exports.isOwner = (req, res, next) => {
         .catch(err => {
             console.log(err)
             return res.status(500).json({
-                err: 'server error: finding shop'
+                err: 'server error: finding shop2'
             })
         })
 }

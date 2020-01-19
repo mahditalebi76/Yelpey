@@ -17,9 +17,8 @@ module.exports.updateShopInfo = async (req, res) => {
         })
         .then(shop => {
             const imagePath = path.join(__dirname, '../../../public/shops');
-            const info = `img${shop.id}__${shop.name}.jpg`;
-            const fileUpload = new Resize(imagePath, info);
-            let ImageName = 'img' + shop.id + '__' + shop.name + '.jpg';
+            const ImageName = `shop${shop.id}.jpg`;
+            const fileUpload = new Resize(imagePath, ImageName);
             let imageUrl = '/public/shops/' + ImageName
 
             updateOrCreate(Image, {
@@ -43,6 +42,7 @@ module.exports.updateShopInfo = async (req, res) => {
                     }).then(image => {
                         Shop.update({
                                 name: req.body.name,
+                                description: req.body.description,
                                 categoryId: req.body.categoryId,
                                 phone: req.body.phone,
                                 imageId: image.id,

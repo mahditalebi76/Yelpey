@@ -16,10 +16,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      // imageId: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: true,
-      // },
+      imageId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
       content: {
         type: Sequelize.STRING,
         allowNull: false,

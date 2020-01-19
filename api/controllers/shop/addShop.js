@@ -19,6 +19,7 @@ module.exports.addShop = (req, res) => {
             Shop.create({
                 userId: req.user.id,
                 name: req.body.name,
+                description: req.body.description,
                 addressId: address.id,
                 categoryId: req.body.categoryId,
                 phoneVerified: false,

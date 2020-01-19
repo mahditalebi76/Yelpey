@@ -1,17 +1,17 @@
 const db = require('../../../models/index');
 const User = db.users;
 const Shop = db.shops;
-const ShopRate = db.shopRates;
+const Shoprate = db.shoprates;
 
 const {
     updateOrCreate
 } = require('../../middlewares/updateOrCreate');
 
 
-module.exports.getUserShopRate = (req, res) => {
+module.exports.getUserShoprate = (req, res) => {
 
 
-    ShopRate.findOne({
+    Shoprate.findOne({
             where: {
                 shopId: req.body.id,
                 userId: req.user.id

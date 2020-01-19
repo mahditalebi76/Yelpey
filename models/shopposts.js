@@ -19,14 +19,14 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
-    // imageId: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: true,
-    //   references: {
-    //     model: 'images',
-    //     key: 'id'
-    //   }
-    // },
+    imageId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'images',
+        key: 'id'
+      }
+    },
     content: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -41,7 +41,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   shopPosts.associate = function (models) {
-    // associations can be defined here
+    shopPosts.belongsTo(models.shops, {
+      foreignKey: 'shopId',
+      as: 'shop'
+    })
+    shopPosts.belongsTo(models.images, {
+      foreignKey: 'imageId',
+      as: 'image'
+    })
   };
   return shopPosts;
 };
