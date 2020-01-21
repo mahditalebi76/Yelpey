@@ -29,8 +29,7 @@ module.exports.superSearch = (req, res) => {
     shopWhere = Object.entries(shopWhere).reduce(
         (a, [k, v]) =>
         v == null ?
-        a :
-        {
+        a : {
             ...a,
             [k]: v
         }, {}
@@ -38,8 +37,7 @@ module.exports.superSearch = (req, res) => {
     addressWhere = Object.entries(addressWhere).reduce(
         (a, [k, v]) =>
         v == null ?
-        a :
-        {
+        a : {
             ...a,
             [k]: v
         }, {}
@@ -149,7 +147,7 @@ module.exports.superSearch = (req, res) => {
                         [orderWay]
                     );
                     return res.status(200).json({
-                        sorted
+                        shops: sorted
                     });
                 })
                 .catch(err => {

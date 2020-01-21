@@ -11,12 +11,10 @@ module.exports = {
       postalCode: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       addressText: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
       },
       cityId: {
         //refrences cities

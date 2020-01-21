@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const validate = require('../middlewares/Joi');
-const schemas = require('../validators/user');
+const schema = require('../validators/address/addAddress');
 const addressController = require('../controllers/address/addAddress');
 const passport = require('passport');
 const {
@@ -19,7 +19,7 @@ router.patch('/updateUserAddress',
     passport.authenticate('jwt', {
         session: false
     }),
-    validate(schemas.address),
+    validate(schema),
     addUserAddress
 );
 
@@ -28,7 +28,7 @@ router.patch('/updateShopAddress',
         session: false
     }),
     isOwner,
-    validate(schemas.address),
+    validate(schema),
     addShopAddress
 );
 

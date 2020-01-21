@@ -14,7 +14,7 @@ module.exports.getShop = (req, res) => {
                     [sequelize.literal('Case when "rateCount"=0 then 0 Else CAST("rateSum" AS float) / CAST("rateCount" AS float) End'), 'rate']
                 ]
             },
-            include: ['category', 'address', 'thumbnail']
+            include: ['user', 'category', 'address', 'thumbnail']
         }).then(shop => {
             return res.status(200).json({
                 shop

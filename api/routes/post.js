@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const validate = require('../middlewares/Joi');
-const schemas = require('../validators/user');
+const schemas = require('../validators/post');
 const passport = require('passport');
 const upload = require('../middlewares/uploadMiddleware');
 const {
@@ -19,14 +19,13 @@ router.post('/addPost',
         session: false
     }),
     upload.single('image'),
+    validate(schemas.addPost),
     isOwner,
     addPost
 )
 
 router.post('/getShopPosts',
-    passport.authenticate('jwt', {
-        session: false
-    }),
+    validate(schemas.getShopPosts),
     getShopPosts)
 
 

@@ -43,7 +43,7 @@ module.exports.register = async (req, res) => {
                                 confirmationCode,
                                 firstName: req.body.firstName,
                                 lastName: req.body.lastName,
-                                userType: 'normal'
+                                avatarId: 1000
                             })
                             .then(async user => {
                                 emailVerificationMailer.sendEmail(

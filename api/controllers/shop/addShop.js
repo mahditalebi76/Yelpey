@@ -24,6 +24,7 @@ module.exports.addShop = (req, res) => {
                 categoryId: req.body.categoryId,
                 phoneVerified: false,
                 isOpen: false,
+                imageId: 2000
             }).then(shop => {
                 return res.status(200).json({
                     mess: 'shop added',

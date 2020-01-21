@@ -11,12 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       postalCode: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
       },
       addressText: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
       },
       cityId: {
         //refrences cities

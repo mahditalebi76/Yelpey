@@ -7,7 +7,7 @@ const sequelize = require('../../../database-connection');
 module.exports.getUserReviews = (req, res) => {
     Review.findAll({
             where: {
-                userId: req.user.id
+                userId: req.body.id
             },
 
             include: [{

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const validate = require('../middlewares/Joi');
-const schemas = require('../validators/user');
+const schemas = require('../validators/comment');
 const passport = require('passport');
 const {
     addComment
@@ -16,17 +16,19 @@ router.post('/addComment',
     passport.authenticate('jwt', {
         session: false
     }),
+    validate(schemas.addComment),
     addComment
 )
+
+
 router.post('/getShopComments',
-    passport.authenticate('jwt', {
-        session: false
-    }),
+    validate(schemas.getShopComments),
     getShopComments)
+
+
 router.post('/getUserComments',
-    passport.authenticate('jwt', {
-        session: false
-    }),
+    validate(schemas.getUserComments),
+
     getUserComments)
 
 

@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const validate = require('../middlewares/Joi');
-const schemas = require('../validators/user');
+const rateSchema = require('../validators/rate/addRate');
 const passport = require('passport');
 const upload = require('../middlewares/uploadMiddleware');
+
+
 
 const {
     addShop
@@ -31,6 +33,7 @@ router.post('/rateShop',
     passport.authenticate('jwt', {
         session: false
     }),
+    validate(rateSchema),
     rateShop)
 
 router.post('/getUserShoprate',

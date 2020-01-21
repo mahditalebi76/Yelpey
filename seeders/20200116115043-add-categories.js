@@ -3,7 +3,7 @@ module.exports = {
     return queryInterface.bulkInsert('categories',
 
       [{
-          name: 'super market',
+          name: 'سوپر مارکت',
           icon: '<i class="fas fa-store"></i>',
           description: 'سوپرمارکت شکلی از بقالی ولی بزرگتر از آن است که مشتری خودش محصولات را از قفسه برمی‌دارد یا به اصطلاح سلف سرویس است',
           imageId: 5001,
@@ -13,7 +13,7 @@ module.exports = {
 
 
         {
-          name: 'clothing store',
+          name: 'فروشگاه لباس',
           icon: '<i class="fas fa-tshirt"></i>',
           description: 'مکانی جهت خرید لباس ، که می تواند برای تمامی سنین و هر جنسیتی کاربرد داشته باشد ',
           imageId: 5002,
@@ -22,7 +22,7 @@ module.exports = {
         },
 
         {
-          name: 'fruit shop',
+          name: 'میوه فروشی',
           icon: '<i class="fas fa-apple-alt"></i>',
           description: 'مکانی برای توزیع میوه که با توجه به فصل میوه های متفاوتی عرضه می کند',
           imageId: 5003,
@@ -31,7 +31,7 @@ module.exports = {
         },
 
         {
-          name: 'bakery',
+          name: 'قنادی',
           icon: '<i class="fas fa-bread-slice"></i>',
           description: 'نانوایی مکانی است که برای تولید یا عرضه محصولاتی که عموماً توسط فر یا تنور پخته می‌شود.',
           imageId: 5004,
@@ -40,7 +40,7 @@ module.exports = {
         },
 
         {
-          name: 'tool',
+          name: 'فروشگاه ابزار',
           icon: '<i class="fas fa-toolbox"></i>',
           description: 'محلی برای فروش انواع ابزارآلات مانند پیچ گوشتی ، انبر ',
           imageId: 5005,
@@ -50,7 +50,7 @@ module.exports = {
 
 
         {
-          name: 'mechanical',
+          name: 'مکانیکی',
           icon: '<i class="fas fa-tools"></i>',
           description: 'مکانی برای تعمیر خودروهایی که دچار مشکل شده اند ',
           imageId: 5006,
@@ -60,7 +60,7 @@ module.exports = {
 
 
         {
-          name: 'yadaki',
+          name: 'یدکی',
           icon: '<i class="fas fa-cogs"></i>',
           description: 'مکانی برای خرید لئازم خودرو که دچار  مشکل شده اند',
           imageId: 5007,
@@ -70,7 +70,7 @@ module.exports = {
 
 
         {
-          name: 'fastfood',
+          name: 'فست فود',
           icon: '<i class="fas fa-hamburger"></i>',
           description: 'فست فود یا غذای فوری عنوانی است برای غذاهایی که به سرعت طبخ و آماده می‌شوند ',
           imageId: 5008,
@@ -80,7 +80,7 @@ module.exports = {
 
 
         {
-          name: 'barber shop',
+          name: 'آرایشگاه',
           icon: '<i class="fas fa-cut"></i>',
           description: 'آرایشگاه مردانه یا پیرایشگاه به مکانی گفته می‌شود که اصلاح و آرایش موی مردان صورت می‌گیرد که جنبه آرایشی و بهداشتی دارد.',
           imageId: 5009,
@@ -90,7 +90,7 @@ module.exports = {
 
 
         {
-          name: 'shoe store',
+          name: 'کفش فروشی',
           icon: '<i class="fas fa-shoe-prints"></i>',
           description: 'مکانی برای خرید انواع کفش',
           imageId: 5010,
@@ -100,7 +100,7 @@ module.exports = {
 
 
         {
-          name: 'restaurant',
+          name: 'رستوران',
           icon: '<i class="fas fa-utensils"></i>',
           description: 'رستوران نوعی بنگاه است که در آن خوراک و نوشیدنی ارائه و در همان‌جا صرف می‌شود',
           imageId: 5011,
@@ -110,7 +110,7 @@ module.exports = {
 
 
         {
-          name: 'bank',
+          name: 'بانک',
           icon: '<i class="fas fa-university"></i>',
           description: 'نهادی اقتصادی است که وظیفه‌هایی چون تجهیز و توزیع اعتبارات، عملیات اعتباری، عملیات مالی، خرید و فروش ارزها، نقل و انتقال وجوه، وصول مطالبات اسنادی و سود سهام مشتریان، پرداخت بدهی مشتریان، قبول امانات، نگهداری سهام و اوراق بهادار و اشیای قیمتی مشتریان، انجام وظیفهٔ قیمومیت و وصایت برای مشتریان، انجام وکالت خریدها و فروش را بر عهده دارند',
           imageId: 5012,
@@ -120,7 +120,7 @@ module.exports = {
 
 
         {
-          name: 'computer',
+          name: 'خدمات کامپیوتر',
           icon: '<i class="fas fa-laptop"></i>',
           description: 'مکانی برای ارایه خدمات کامپیوتری',
           imageId: 5013,

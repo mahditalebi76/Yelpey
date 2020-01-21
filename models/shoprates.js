@@ -72,9 +72,7 @@ module.exports = (sequelize, DataTypes) => {
           where: {
             id: shop.id
           }
-        }).then(done => {
-          console.log("done3")
-        })
+        }).then(done => {})
       })
     })
   })
@@ -95,9 +93,7 @@ module.exports = (sequelize, DataTypes) => {
         where: {
           id: shop.id
         }
-      }).then(done => {
-        console.log("done1")
-      })
+      }).then(done => {})
 
     })
   })
@@ -121,9 +117,7 @@ module.exports = (sequelize, DataTypes) => {
           where: {
             id: shop.id
           }
-        }).then(done => {
-          console.log("done2")
-        })
+        }).then(done => {})
       })
     })
   })

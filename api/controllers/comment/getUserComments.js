@@ -7,9 +7,8 @@ const sequelize = require('../../../database-connection');
 module.exports.getUserComments = (req, res) => {
     Comment.findAll({
             where: {
-                userId: req.user.id
+                userId: req.body.id
             },
-
             include: [{
                 model: Shop,
                 as: 'shop',
